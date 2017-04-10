@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PatatapClone</title>
+	<!-- Load the Paper.js library -->
+	<script type="text/javascript" src="paper-full.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<!-- Define inlined PaperScript associate it with myCanvas -->
+	<script type="text/paperscript" canvas="myCanvas">
+		function onKeyDown(event) {
+			// Set maxpoint
+			var maxPoint = new Point(view.size.width, view.size.height);
+			new Path.Circle(maxPoint, 10).fillColor = "pink";
+		}
+	</script>
+</head>
+<body>
+	<canvas id="myCanvas" resize></canvas>
+</body>
+</html>
+
