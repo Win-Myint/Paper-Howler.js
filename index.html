@@ -7,10 +7,26 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<!-- Define inlined PaperScript associate it with myCanvas -->
 	<script type="text/paperscript" canvas="myCanvas">
+		var circles = [];
+
 		function onKeyDown(event) {
-			// Set maxpoint
+			// Set maxpoint when any key is pressed
 			var maxPoint = new Point(view.size.width, view.size.height);
-			new Path.Circle(maxPoint, 10).fillColor = "pink";
+			// Randomize started point but not bigger than "maxpoint"
+			var randomPoint = Point.random();
+			var point = maxPoint * randomPoint;
+			var newCircle = Path.Circle(point, 500);
+			newCircle.fillColor = "pink";
+			circles.push(newCircle);
+		}
+
+		function onFrame(event) {
+			for(var i = 0; i < circles.length; i++) {
+				// Each frame, change the fill color of the path slightly by adding 1 to its hue
+				circles[i].fillColor.hue += 1;
+				// Shrink circle slowly
+				circles[i].scale(.9);
+			}
 		}
 	</script>
 </head>
