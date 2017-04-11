@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>PatatapClone</title>
-	<!-- Load the Paper.js library -->
+	<title>SimplifiedPatatap</title>
+	<!-- Load Paper.js library -->
 	<script type="text/javascript" src="paper-full.min.js"></script>
+	<!-- Load Howler.js library -->
+	<script type="text/javascript" src="howler.core.min.js"></script>
+	<!-- Css -->
 	<link rel="stylesheet" type="text/css" href="styles.css">
+
 	<!-- Define inlined PaperScript associate it with myCanvas -->
 	<script type="text/paperscript" canvas="myCanvas">
+		// Require howler.js's sound object
+		var sound = new Howl({
+  			src: ['sounds/clay.mp3']
+		});
+
 		var circles = [];
 
 		function onKeyDown(event) {
+			// Trigger howler.js play method onKeyDown
+			sound.play();
 			// Set maxpoint when any key is pressed
 			var maxPoint = new Point(view.size.width, view.size.height);
 			// Randomize started point but not bigger than "maxpoint"
