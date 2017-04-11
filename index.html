@@ -13,6 +13,7 @@
 	<script type="text/paperscript" canvas="myCanvas">
 
 		// Defined a whichKey object to store keydata 
+		// Require howler.js sound object
 		var whichKey = {
 			q: {
 				sound: new Howl({
@@ -176,6 +177,7 @@
 
 		function onKeyDown(event) {
 
+			// If onKeyDown "key" exists in whichKey object
 			if(whichKey[event.key]) {
 				// Set maxpoint when any key is pressed
 				var maxPoint = new Point(view.size.width, view.size.height);
@@ -196,7 +198,7 @@
 				// Each frame, change the fill color of the path slightly by adding 1 to its hue
 				circles[i].fillColor.hue += 1;
 
-				// Remove circle when its area is less than 1
+				// Remove circle when its area is less than 1 to save memory space
 				if(circles[i].area < 1){
 			      circles[i].remove();
 			      circles.splice(i, 1);
